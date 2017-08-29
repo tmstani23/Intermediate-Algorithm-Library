@@ -31,10 +31,10 @@ function sumRange(arr) {
 
   
 
-function diffArray(arr1, arr2) {
-  //Compare two arrays and return a new array 
+//Compare two arrays and return a new array 
     //with any items only found in one of the two given arrays, 
     //but not both. 
+function uniqueArray(arr1, arr2) {
   
   var newArr = [];
   var arrLength;
@@ -65,4 +65,53 @@ function diffArray(arr1, arr2) {
   //console.log(newArr);
   return newArr;
 }
-//diffArray([1, "calf", 3, "piglet"], [7, "filly"]);
+//uniqueArray([1, "calf", 3, "piglet"], [7, "filly"]);
+
+//Convert a number to roman numeral
+function convertToRoman(num) {
+  var digits = [];
+  var resultSymb = [];
+  var result;
+  var symbolDict = {
+    1: "I",
+    5: "V",
+    10: "X",
+    50: "L",
+    100: "C",
+    500: "D",
+    1000: "M"
+  };
+  
+  digits = ("" + num).split("");
+
+  
+  if(digits.length = 1) {
+    if (num <= 3) {
+      loopDigits(num)
+    }
+    else if (num=5){
+
+    }
+    else if (num < 9) {
+
+    }
+  function loopDigits(times) {
+    for (i=0; i<times; i++){
+      if (symbolDict[1] < resultsSymb.indexOf(i-1)) 
+      resultSymb.push(symbolDict[1])
+      else if (symbolDict[5] > resultsSymb.indexOf(i-1) ) {
+
+      }
+    }
+  }
+    
+  }
+  result = resultSymb.join('');
+ 
+  
+  console.log(result);
+  return result;
+ }
+ 
+ 
+ convertToRoman(3);
