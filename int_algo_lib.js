@@ -70,7 +70,8 @@ function uniqueArray(arr1, arr2) {
 //Convert a number to roman numeral
 function convertToRoman(num) {
   var digits = [];
-  var resultSymb = [];
+  var resultSymb = [
+  ];
   var result;
   var symbolDict = {
     1: "I",
@@ -83,35 +84,131 @@ function convertToRoman(num) {
   };
   
   digits = ("" + num).split("");
-
   
-  if(digits.length = 1) {
-    if (num <= 3) {
-      loopDigits(num)
-    }
-    else if (num=5){
-
-    }
-    else if (num < 9) {
-
-    }
-  function loopDigits(times) {
+  function loopDigits(times, symbol) {
     for (i=0; i<times; i++){
-      if (symbolDict[1] < resultsSymb.indexOf(i-1)) 
-      resultSymb.push(symbolDict[1])
-      else if (symbolDict[5] > resultsSymb.indexOf(i-1) ) {
+        resultSymb.push(symbolDict[symbol])  
+    }
+  }
 
+  function getOnes(num, multiplier){
+    console.log(num)
+    if(num=="0"){
+      return undefined;
+    }
+    if (num <= 3) {
+      loopDigits(num, 1 * multiplier);
+    }
+    if (num == 4) {
+      resultSymb.push(symbolDict[1 * multiplier]);
+      resultSymb.push(symbolDict[5 * multiplier]);
+    }
+    if (num == 5){
+      resultSymb.push(symbolDict[5 * multiplier]);
+    }
+    if (num == 9) {
+      resultSymb.push(symbolDict[1 * multiplier], symbolDict[10 * multiplier]);
+    }
+    
+    else if (num > 5) {
+      resultSymb.push(symbolDict[5 * multiplier]);
+      loopDigits(num-5, 1 * multiplier);
+    }
+  }
+  
+  function getTens(num){
+    console.log(num);
+    if(num == "0"){
+      return undefined;
+    }
+    if (num <= 3) {
+      loopDigits(num, 10);
+    }
+    if (num == 4) {
+      resultSymb.push(symbolDict[10]);
+      resultSymb.push(symbolDict[50]);
+    }
+    if (num == 5) {
+      resultSymb.push(symbolDict[50]);
+    }
+    if (num == 9) {
+      resultSymb.push(symbolDict[10]);
+      resultSymb.push(symbolDict[100]);
+    }
+    else if (num > 5) {
+      resultSymb.push(symbolDict[50]);
+      loopDigits(num-5, 10);
+    }
+  }
+  function getHunds(num){
+    if (num < 5){
+      if(num == "0"){
+        return undefined;
+      }
+      if (num <= 3) {
+        loopDigits(num, 100);
+      }
+      if (num == 4) {
+        resultSymb.push(symbolDict[100]);
+        resultSymb.push(symbolDict[500]);
+      }  
+    }
+    else if (num > 5){
+      if (num == 9) {
+        resultSymb.push(symbolDict[100]);
+        resultSymb.push(symbolDict[1000]);
+      }
+      else {
+        resultSymb.push(symbolDict[500]);
+        loopDigits(num-5, 100);
       }
     }
+    else {
+      resultSymb.push(symbolDict[500]);
+    }
   }
+  
+  if(digits.length == 1){
+    getOnes(digits[0], 1);
+  }
+  if(digits.length == 2){
+    getOnes(digits[0], 10);
+    getOnes(digits[1], 1);
+  }
+  if(digits.length == 3){
+    getOnes(digits[0], 100);
+    getOnes(digits[1], 10);
+    getOnes(digits[2], 1);
+  }
+  if(digits.length == 4){
+    getOnes(digits[0], 1000);
+    getOnes(digits[1], 100);
+    getOnes(digits[2], 10);
+    getOnes(digits[3], 1);
+  }
+  else if(digits.length >=5) {
+    alert("You may only enter numbers below ten-thousand!");
+  }
+  // if(digits.length == 2){
+  //   getTens(digits[0], 1);
+  //   getOnes(digits[1], 10);
     
-  }
-  result = resultSymb.join('');
+  // }
+  // if(digits.length == 3){
+  //   getHunds(digits[0]);
+  //   getTens(digits[1]);
+  //   getOnes(digits[2]);
+    
+  // }
+ 
+  
+ 
+ 
+  result = resultSymb.join("");
  
   
   console.log(result);
   return result;
- }
- 
- 
- convertToRoman(3);
+  
+}
+convertToRoman(12565);
