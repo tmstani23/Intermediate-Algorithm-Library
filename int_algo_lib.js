@@ -67,12 +67,13 @@ function uniqueArray(arr1, arr2) {
 }
 //uniqueArray([1, "calf", 3, "piglet"], [7, "filly"]);
 
-//Convert a number to roman numeral
+//Convert a number to roman numeral:
 function convertToRoman(num) {
+  //create an array to hold the digits and another to hold the symbols
   var digits = [];
-  var resultSymb = [
-  ];
+  var resultSymb = [];
   var result;
+  //create a dictionary that matches digit values to symbols:
   var symbolDict = {
     1: "I",
     5: "V",
@@ -82,133 +83,118 @@ function convertToRoman(num) {
     500: "D",
     1000: "M"
   };
-  
+  //split the number into separate digits and store in digits array:
   digits = ("" + num).split("");
   
+  //A function for adding multiples of the same symbol:
   function loopDigits(times, symbol) {
+    //loop for the length of times
     for (i=0; i<times; i++){
-        resultSymb.push(symbolDict[symbol])  
+      //push each symbol into the result symbol array  
+      resultSymb.push(symbolDict[symbol]);  
     }
   }
-
-  function getOnes(num, multiplier){
-    console.log(num)
+  //The main function for converting numbers to symbols
+  //It takes a number and multiplier and converts them into symbols
+  //then saves the symbols in the resultsymb array
+  function getSymbols(num, multiplier){
+    //console.log(num);
+    //if the number is zero pass:
     if(num=="0"){
       return undefined;
     }
     if (num <= 3) {
+      //loop num times and place a single symbol for each iteration
+      //multiplier is used to select the magnitude of the base symbol
+      //ex: 1, 10, 100, 1000
       loopDigits(num, 1 * multiplier);
     }
     if (num == 4) {
+      //add a 1 symbol 
       resultSymb.push(symbolDict[1 * multiplier]);
+      //add a 5 symbol to the resultSymb array
       resultSymb.push(symbolDict[5 * multiplier]);
     }
     if (num == 5){
       resultSymb.push(symbolDict[5 * multiplier]);
     }
     if (num == 9) {
+      //add a 1 symbol and a 10 symbol to the result array
       resultSymb.push(symbolDict[1 * multiplier], symbolDict[10 * multiplier]);
     }
     
     else if (num > 5) {
+      //add a 5 symbol
       resultSymb.push(symbolDict[5 * multiplier]);
+      //loop num times and add a 1 symbol each time
       loopDigits(num-5, 1 * multiplier);
     }
   }
-  
-  function getTens(num){
-    console.log(num);
-    if(num == "0"){
-      return undefined;
-    }
-    if (num <= 3) {
-      loopDigits(num, 10);
-    }
-    if (num == 4) {
-      resultSymb.push(symbolDict[10]);
-      resultSymb.push(symbolDict[50]);
-    }
-    if (num == 5) {
-      resultSymb.push(symbolDict[50]);
-    }
-    if (num == 9) {
-      resultSymb.push(symbolDict[10]);
-      resultSymb.push(symbolDict[100]);
-    }
-    else if (num > 5) {
-      resultSymb.push(symbolDict[50]);
-      loopDigits(num-5, 10);
-    }
-  }
-  function getHunds(num){
-    if (num < 5){
-      if(num == "0"){
-        return undefined;
-      }
-      if (num <= 3) {
-        loopDigits(num, 100);
-      }
-      if (num == 4) {
-        resultSymb.push(symbolDict[100]);
-        resultSymb.push(symbolDict[500]);
-      }  
-    }
-    else if (num > 5){
-      if (num == 9) {
-        resultSymb.push(symbolDict[100]);
-        resultSymb.push(symbolDict[1000]);
-      }
-      else {
-        resultSymb.push(symbolDict[500]);
-        loopDigits(num-5, 100);
-      }
-    }
-    else {
-      resultSymb.push(symbolDict[500]);
-    }
-  }
-  
+ 
+  //If the length of the digits array is 1
+  //then the number is one digit long
   if(digits.length == 1){
-    getOnes(digits[0], 1);
+    //Call get symbols function with 
+      //digits[0] as the number and 1 as the multiplier
+    getSymbols(digits[0], 1);
   }
   if(digits.length == 2){
-    getOnes(digits[0], 10);
-    getOnes(digits[1], 1);
+    //digits[0] as the number and 10 as the multiplier
+    getSymbols(digits[0], 10);
+    getSymbols(digits[1], 1);
   }
   if(digits.length == 3){
-    getOnes(digits[0], 100);
-    getOnes(digits[1], 10);
-    getOnes(digits[2], 1);
+    //digits[0] as the number and 100 as the multiplier
+    getSymbols(digits[0], 100);
+    getSymbols(digits[1], 10);
+    getSymbols(digits[2], 1);
   }
+  //If the length of the digits array is 4
+  //then the number is 4 digits long
   if(digits.length == 4){
-    getOnes(digits[0], 1000);
-    getOnes(digits[1], 100);
-    getOnes(digits[2], 10);
-    getOnes(digits[3], 1);
+    //digits[0] as the number and 100 as the multiplier
+    getSymbols(digits[0], 1000);
+    getSymbols(digits[1], 100);
+    getSymbols(digits[2], 10);
+    getSymbols(digits[3], 1);
   }
+  //If the input number is 5 or greater
+  //alert the user and do nothing:
   else if(digits.length >=5) {
     alert("You may only enter numbers below ten-thousand!");
   }
-  // if(digits.length == 2){
-  //   getTens(digits[0], 1);
-  //   getOnes(digits[1], 10);
-    
-  // }
-  // if(digits.length == 3){
-  //   getHunds(digits[0]);
-  //   getTens(digits[1]);
-  //   getOnes(digits[2]);
-    
-  // }
- 
   
- 
- 
   result = resultSymb.join("");
- 
-  
-  console.log(result);
+  //console.log(result);
   return result;
   
 }
-convertToRoman(12565);
+//Example call:
+//convertToRoman(125);
+
+
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+  
+  //hasOwnProperty returns object prop but not value
+  var object1 = collection[0];
+  //console.log(object1.hasOwnProperty("Romeo"));
+  
+  //Object.keys() returns an array whose elements 
+  //are strings corresponding to the enumerable properties 
+  //found directly upon object. 
+  console.log(Object.keys(object1));
+  console.log(Object.values(object1));
+  console.log(Object.keys.values(collection));
+  // Only change code above this line
+  return arr;
+}
+
+whatIsInAName(
+[ { first: "Romeo", last: "Montague" }, 
+  { first: "Mercutio", last: null }, 
+  { first: "Tybalt", last: "Capulet" }
+],
+  { last: "Capulet" });
