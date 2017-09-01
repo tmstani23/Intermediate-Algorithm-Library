@@ -178,6 +178,65 @@ function whatIsInAName(collection, source) {
   var arr = [];
   // Only change code below this line
   
+  function compareKeys() {
+    var sourceKeys = []
+    var collKeys = []
+    
+    //console.log(collection)
+    // if (source.length == undefined) {
+    //   sourceKeys = (Object.keys(source));
+    // }
+    // else {
+    //   for (i=0; i<source.length; i++){
+    //     sourceKeys.push(Object.keys(source[i]))
+    //   }
+    // }
+    // if(collection.length == undefined) {
+    //   collKeys = (Object.keys(collection));
+    // }
+    // else {
+    //   for (i=0; i<collection.length; i++){
+    //     collKeys.push(Object.keys(collection[i]))
+    //   }
+    // }
+
+    
+    for(i=0; i <collection.length; i++) {
+      console.log(Object.values(collection));
+      for (j=0; j < Object.keys(collection.length); j++) {
+        
+        ;
+        if (collKeys[i][j] == sourceKeys[i]) {
+          //arr.push(sourceKeys[i]);
+          
+          //console.log(collKeys[i]);
+        }
+        
+      }
+      //console.log(collKeys[i][j]);
+    }
+
+    // for(i=0; i<collKeys.length; i++) {
+      
+    //   for(j=0; j<collKeys[i].length; j++) {
+        
+    //     //console.log(collKeys[i][j]);
+    //     if (collKeys[i][j] == sourceKeys[i]) {
+    //       //arr.push(sourceKeys[i]);
+          
+    //       //console.log(collKeys[i]);
+    //     }
+        
+    //   }
+    //   //console.log(collKeys[i][j]);
+    // }
+    // // 
+    //console.log(sourceKeys);
+    //console.log(collKeys);
+  }
+  compareKeys();
+
+
   //hasOwnProperty returns object prop but not value
   var object1 = collection[0];
   //console.log(object1.hasOwnProperty("Romeo"));
@@ -185,9 +244,10 @@ function whatIsInAName(collection, source) {
   //Object.keys() returns an array whose elements 
   //are strings corresponding to the enumerable properties 
   //found directly upon object. 
-  console.log(Object.keys(object1));
-  console.log(Object.values(object1));
-  console.log(Object.keys.values(collection));
+  //console.log(Object.keys(collection));
+  //Object.values returns the objects direct values
+  //console.log(Object.values(object1));
+  //console.log(Object.keys(collection));
   // Only change code above this line
   return arr;
 }
@@ -197,4 +257,4 @@ whatIsInAName(
   { first: "Mercutio", last: null }, 
   { first: "Tybalt", last: "Capulet" }
 ],
-  { last: "Capulet" });
+  { other: "blah", last: "Capulet" });
