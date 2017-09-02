@@ -177,78 +177,62 @@ function whatIsInAName(collection, source) {
   // What's in a name?
   var arr = [];
   // Only change code below this line
+  //get object keys
+  var colObj1 = collection[0];
+  var obj1Keys = Object.keys(colObj1);
+  var sourceKeys = Object.keys(source);
   
-  function compareKeys() {
-    var sourceKeys = []
-    var collKeys = []
-    
-    //console.log(collection)
-    // if (source.length == undefined) {
-    //   sourceKeys = (Object.keys(source));
-    // }
-    // else {
-    //   for (i=0; i<source.length; i++){
-    //     sourceKeys.push(Object.keys(source[i]))
-    //   }
-    // }
-    // if(collection.length == undefined) {
-    //   collKeys = (Object.keys(collection));
-    // }
-    // else {
-    //   for (i=0; i<collection.length; i++){
-    //     collKeys.push(Object.keys(collection[i]))
-    //   }
-    // }
-
-    
-    for(i=0; i <collection.length; i++) {
-      console.log(Object.values(collection));
-      for (j=0; j < Object.keys(collection.length); j++) {
-        
-        ;
-        if (collKeys[i][j] == sourceKeys[i]) {
-          //arr.push(sourceKeys[i]);
-          
-          //console.log(collKeys[i]);
-        }
-        
+  //get key value for obj and source
+  var obj1Values = Object.values(colObj1);
+  var sourceValues = Object.values(source);
+  //console.log(obj1Values);
+  //console.log(sourceValues);
+  //console.log(obj1Keys);
+  //console.log(sourceKeys);
+  //Check first key in first object against source key
+  if(obj1Keys[0] == sourceKeys[0]){
+    //check first value for match between col obj and source:
+    if(obj1Keys[0].hasOwnProperty(objValues[0]) == 
+      sourceKeys[0].hasOwnProperty(sourceKeys[0])) {
+        //console.log("true");
       }
-      //console.log(collKeys[i][j]);
-    }
-
-    // for(i=0; i<collKeys.length; i++) {
-      
-    //   for(j=0; j<collKeys[i].length; j++) {
-        
-    //     //console.log(collKeys[i][j]);
-    //     if (collKeys[i][j] == sourceKeys[i]) {
-    //       //arr.push(sourceKeys[i]);
-          
-    //       //console.log(collKeys[i]);
-    //     }
-        
-    //   }
-    //   //console.log(collKeys[i][j]);
-    // }
-    // // 
-    //console.log(sourceKeys);
-    //console.log(collKeys);
   }
-  compareKeys();
-
-
-  //hasOwnProperty returns object prop but not value
-  var object1 = collection[0];
-  //console.log(object1.hasOwnProperty("Romeo"));
+  //check second key in first object against second source key
+  if(obj1Keys[1] == sourceKeys[1]){
+    //check first value for match between col obj and source:
+    if(obj1Keys[1].hasOwnProperty(obj1Values[1]) == 
+      //check second value for match between colobj and source val:
+      sourceKeys[1].hasOwnProperty(sourceKeys[1])) {
+        arr.push(colObj1);
+        //console.log(arr);
+      }
+  }    
+  //iterate through the collections objects:
+  for(var object in collection) {
+    //iterate through the source objs
+    for(var sObj in source) {
+      var sKey = Object.keys(source[sObj])
+    }
+    //iterate through the collections keys:
+    for(var key in collection[object]) {
+      
+      if(collection[object][key] != null) {
+        if (Object.keys(source[sObj][sKey]) == Object.keys(collection[object][key])) {
+        
+          console.log(true);
+        }
+      }
+    }
+  }
   
-  //Object.keys() returns an array whose elements 
-  //are strings corresponding to the enumerable properties 
-  //found directly upon object. 
-  //console.log(Object.keys(collection));
-  //Object.values returns the objects direct values
-  //console.log(Object.values(object1));
-  //console.log(Object.keys(collection));
-  // Only change code above this line
+  
+  //If first is the same
+    //Check first property against source prop
+      //if prop is the same
+        //send collection object to array
+    //Check 2nd key
+  //
+
   return arr;
 }
 
@@ -257,4 +241,4 @@ whatIsInAName(
   { first: "Mercutio", last: null }, 
   { first: "Tybalt", last: "Capulet" }
 ],
-  { other: "blah", last: "Capulet" });
+  { last: "Capulet" });
