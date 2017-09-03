@@ -176,69 +176,58 @@ function convertToRoman(num) {
 function whatIsInAName(collection, source) {
   // What's in a name?
   var arr = [];
-  // Only change code below this line
-  //get object keys
-  var colObj1 = collection[0];
-  var obj1Keys = Object.keys(colObj1);
-  var sourceKeys = Object.keys(source);
   
-  //get key value for obj and source
-  var obj1Values = Object.values(colObj1);
-  var sourceValues = Object.values(source);
-  //console.log(obj1Values);
-  //console.log(sourceValues);
-  //console.log(obj1Keys);
-  //console.log(sourceKeys);
-  //Check first key in first object against source key
-  if(obj1Keys[0] == sourceKeys[0]){
-    //check first value for match between col obj and source:
-    if(obj1Keys[0].hasOwnProperty(objValues[0]) == 
-      sourceKeys[0].hasOwnProperty(sourceKeys[0])) {
-        //console.log("true");
-      }
-  }
-  //check second key in first object against second source key
-  if(obj1Keys[1] == sourceKeys[1]){
-    //check first value for match between col obj and source:
-    if(obj1Keys[1].hasOwnProperty(obj1Values[1]) == 
-      //check second value for match between colobj and source val:
-      sourceKeys[1].hasOwnProperty(sourceKeys[1])) {
-        arr.push(colObj1);
-        //console.log(arr);
-      }
-  }    
+  var sourceProps=Object.values(source);
+  var sourceKeys=Object.keys(source);
+  var sourceKey0 = sourceKeys[0];
+  var sourceKey1 = sourceKeys[1];
+  var sourceProp0 = sourceProps[0]
+  //console.log(sourceProp0)
+  var sourceProp1 = sourceProps[1]
+  
+  
   //iterate through the collections objects:
-  for(var object in collection) {
-    //iterate through the source objs
-    for(var sObj in source) {
-      var sKey = Object.keys(source[sObj])
-    }
+  for(object in collection) {
+    //console.log(object);
     //iterate through the collections keys:
-    for(var key in collection[object]) {
-      
-      if(collection[object][key] != null) {
-        if (Object.keys(source[sObj][sKey]) == Object.keys(collection[object][key])) {
+    for(key in collection[object]) {
+      //console.log(key);
+      if(key == sourceKey0){
+        //console.log("true");
         
-          console.log(true);
+        if(collection[object][key] == sourceProp0){
+          if(sourceProps.length > 1) {
+            checkSource2();
+          }
+          else {
+            arr.push(collection[object]);
+            //console.log(sourceProp0);
+          }
+        }
+      }  
+    }
+  }
+  function checkSource2() {
+    for(object in collection) {
+      console.log(object);
+      //iterate through the collections keys:
+      for(key in collection[object]) {
+        console.log(key);
+        if(key == sourceKey1){
+         
+          if(collection[object][key] == sourceProp1){
+            //console.log(sourceProp1);
+            if(arr[object] != collection[object]){
+              arr.push(collection[object]);
+            }
+            
+          }
         }
       }
     }
   }
-  
-  
-  //If first is the same
-    //Check first property against source prop
-      //if prop is the same
-        //send collection object to array
-    //Check 2nd key
-  //
-
+  console.log(arr);
   return arr;
 }
 
-whatIsInAName(
-[ { first: "Romeo", last: "Montague" }, 
-  { first: "Mercutio", last: null }, 
-  { first: "Tybalt", last: "Capulet" }
-],
-  { last: "Capulet" });
+whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "b": 2 });
