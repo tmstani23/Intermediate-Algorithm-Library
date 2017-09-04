@@ -172,60 +172,64 @@ function convertToRoman(num) {
 //Example call:
 //convertToRoman(125);
 
-
+//search an array of objects for specific key and value pairs
+//if the object matches the input object's keys and values 
+//save the object in a new array
 function whatIsInAName(collection, source) {
-  // What's in a name?
+  //create empty array to hold result objects:
   var arr = [];
-  
+  //create variable to hold the source object's property values
   var sourceProps=Object.values(source);
+  //create variable to hold the source object's keys
   var sourceKeys=Object.keys(source);
+  //create variable that holds the first key
   var sourceKey0 = sourceKeys[0];
+  //create variable that holds the 2nd key
   var sourceKey1 = sourceKeys[1];
+  //create variable that holds the first property value
   var sourceProp0 = sourceProps[0]
-  //console.log(sourceProp0)
+  //create variable that holds the 2nd property value
   var sourceProp1 = sourceProps[1]
+  //create flag variable for when a match is found
+  var match = false;
   
-  
-  //iterate through the collections objects:
+  //Loop through the collection objects:
   for(object in collection) {
-    //console.log(object);
     //iterate through the collections keys:
     for(key in collection[object]) {
-      //console.log(key);
+      //if the current collection key equals the first source key:
       if(key == sourceKey0){
-        //console.log("true");
-        
+        //if the current key's property equals 
+        //the first source key's property:
         if(collection[object][key] == sourceProp0){
+          //if there are more than one source properties:
           if(sourceProps.length > 1) {
-            checkSource2();
+            //the first key/property pair matches
+            match = true;
           }
           else {
+            //push the matching collection object to the result array
             arr.push(collection[object]);
             //console.log(sourceProp0);
           }
         }
-      }  
-    }
-  }
-  function checkSource2() {
-    for(object in collection) {
-      console.log(object);
-      //iterate through the collections keys:
-      for(key in collection[object]) {
-        console.log(key);
-        if(key == sourceKey1){
-         
-          if(collection[object][key] == sourceProp1){
-            //console.log(sourceProp1);
-            if(arr[object] != collection[object]){
+      }
+      //if the current collection key matches the second source key:
+      if(key == sourceKey1){
+        //if this key's property matches the second source property: 
+        if(collection[object][key] == sourceProp1){
+          //if the first key was also a match:
+          if(match = true) {
+              //reset the match flag
+              match = false;
+              //send the current collection object to the result array:
               arr.push(collection[object]);
-            }
-            
           }
         }
       }
     }
-  }
+  }      
+      
   console.log(arr);
   return arr;
 }
