@@ -233,5 +233,37 @@ function whatIsInAName(collection, source) {
   console.log(arr);
   return arr;
 }
+//Example call:
+//whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
 
-whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "b": 2 });
+// Perform a search and replace on the sentence using the arguments provided and return the new sentence.
+// First argument is the sentence to perform the search and replace on.
+// Second argument is the word that you will be replacing (before).
+// Third argument is what you will be replacing the second argument with (after).
+function myReplace(str, before, after) {
+  
+  var sentence = String(arguments[0]);
+  var replaceArg =  String(arguments[1]);
+  var replaceWArg =  String(arguments[2]);
+  var re = new RegExp(replaceArg);
+
+  for (letterI in replaceArg) {
+    var character = replaceArg[letterI];
+    
+    if(character == character.toUpperCase()){
+      
+      replaceWArg = replaceWArg.charAt(letterI).toUpperCase() + replaceWArg.substring(1);
+    
+      //console.log(replaceL);
+      console.log(replaceWArg);
+    }
+  }
+  var replacedStr = sentence.replace(re, replaceWArg);
+  console.log(replaceArg);
+  //console.log(replaceWArg);
+  //console.log(re);
+  console.log(replacedStr);
+  return replacedStr;
+}
+
+myReplace("He is Sleeping on the couch", "Sleeping", "sitting");
