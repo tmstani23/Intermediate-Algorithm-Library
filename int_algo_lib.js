@@ -241,29 +241,75 @@ function whatIsInAName(collection, source) {
 // Second argument is the word that you will be replacing (before).
 // Third argument is what you will be replacing the second argument with (after).
 function myReplace(str, before, after) {
-  
+  //break the string and arguments into separate strings:
   var sentence = String(arguments[0]);
   var replaceArg =  String(arguments[1]);
   var replaceWArg =  String(arguments[2]);
+  //create a regular expression search string:
   var re = new RegExp(replaceArg);
 
+  //loop through each letter in the to replace string:
   for (letterI in replaceArg) {
+    //create variable that holds each character in the string
     var character = replaceArg[letterI];
-    
+    //if the character is uppercase:
     if(character == character.toUpperCase()){
-      
+      //Make the character in the replace with string uppercase:
       replaceWArg = replaceWArg.charAt(letterI).toUpperCase() + replaceWArg.substring(1);
-    
-      //console.log(replaceL);
-      console.log(replaceWArg);
     }
   }
+  //Replace each instance of the re search string, in the sentence, with the replaceWArg:
+  //Save to new result string:
   var replacedStr = sentence.replace(re, replaceWArg);
-  console.log(replaceArg);
-  //console.log(replaceWArg);
-  //console.log(re);
+  
   console.log(replacedStr);
   return replacedStr;
 }
+//Example call:
+//myReplace("He is Sleeping on the couch", "Sleeping", "sitting");
 
-myReplace("He is Sleeping on the couch", "Sleeping", "sitting");
+
+//Translate the provided string to pig latin.
+function translatePigLatin(str) {
+  //I want the input string to be in pig latin.
+  //example: onsonant-cay
+  var isVowel = false;
+  //save the first letter as a var:
+  var firstL = str[0];
+  //remove first letter of string
+  str = str.substr(1);
+  console.log(firstL);
+  //create an array of vowels
+  var vowels = ["a", "e", "i", "o", "u",];
+  //loop through each vowel
+  for (vowel in vowels) {
+    //check saved first letter against a vowel to verify if consonant or vowel:
+    console.log(vowel);
+    if(vowels[vowel] == firstL) {
+      //if vowel: set vowel to true
+      isVowel = true;
+      //cancel loop
+      console.log(isVowel);
+      
+     
+    }
+    else if (vowels[vowel] != firstL) {
+      //if not a vowel: set vowel to false
+        isVowel = false;
+        console.log(isVowel);
+    }
+  }
+  if (isVowel == true){
+    //add "way" to the end   
+    str = str + "way";
+  }  
+  else {
+    //move first letter +"ay" to end:
+    str = str + firstL + "ay";
+  }
+
+  console.log(str);  
+  return str;
+}
+
+translatePigLatin("eight");
