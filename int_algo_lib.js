@@ -271,45 +271,52 @@ function myReplace(str, before, after) {
 
 //Translate the provided string to pig latin.
 function translatePigLatin(str) {
-  //I want the input string to be in pig latin.
-  //example: onsonant-cay
+  //set flag variables for whether a character is a vowel:
   var isVowel = false;
-  //save the first letter as a var:
+  var isVowel2 = false;
+  //save the first/second letter as vars:
   var firstL = str[0];
-  //remove first letter of string
-  str = str.substr(1);
-  console.log(firstL);
+  var secondL = str[1];
+  
   //create an array of vowels
   var vowels = ["a", "e", "i", "o", "u",];
   //loop through each vowel
   for (vowel in vowels) {
     //check saved first letter against a vowel to verify if consonant or vowel:
-    console.log(vowel);
     if(vowels[vowel] == firstL) {
       //if vowel: set vowel to true
       isVowel = true;
-      //cancel loop
-      console.log(isVowel);
-      
-     
     }
-    else if (vowels[vowel] != firstL) {
-      //if not a vowel: set vowel to false
-        isVowel = false;
-        console.log(isVowel);
+    //check second letter of the string against a vowel
+    if(vowels[vowel] == secondL) {
+      //if vowel: set vowel2 to true
+      isVowel2 = true;
+      
     }
   }
+  //if first character is a vowel:
   if (isVowel == true){
-    //add "way" to the end   
+    //add "way" to the end of the string  
     str = str + "way";
-  }  
+  } 
+  //else if first and second characters are not vowels (they are consonants):
+  else if (isVowel2 == false && isVowel == false){
+    //remove first 2 characters from the string 
+    str = str.substr(2);
+    //append the first and second letter to the end of the string
+    //add "ay" at the end:
+    str = str + firstL + secondL + "ay";
+  }   
+
   else {
-    //move first letter +"ay" to end:
+    //remove first letter of string
+    str = str.substr(1);
+    //move first letter + "ay" to end:
     str = str + firstL + "ay";
   }
 
   console.log(str);  
   return str;
 }
-
-translatePigLatin("eight");
+//Example call:
+//translatePigLatin("tree");
