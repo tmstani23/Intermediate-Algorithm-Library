@@ -320,3 +320,38 @@ function translatePigLatin(str) {
 }
 //Example call:
 //translatePigLatin("tree");
+
+function dnaPair(str) {
+  //Create encapsulating array:
+  var finalArr = [];
+  
+  
+  //split the input chars to their own arrays:
+  var baseArr = str.split("");
+  
+  //loop through the base array 
+  for (i=0; i<baseArr.length; i++){
+    //if the character is G:
+    switch(baseArr[i]) {
+      case "G":
+        //add in the character and it's opposite dna pair:
+        finalArr.push(["G", "C"]);
+        break;
+      //repeat the same process for each character
+      //adding in the base it's opposite dna pair:
+      case "C":
+      finalArr.push(["C", "G"]);
+        break;
+      case "A":
+      finalArr.push(["A", "T"]);
+        break;
+      case "T":
+      finalArr.push(["T", "A"]);
+        break;
+    }  
+  }
+console.log(finalArr);
+return finalArr;
+}
+//example call:
+dnaPair("ATCGA");
