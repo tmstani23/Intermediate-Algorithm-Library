@@ -392,3 +392,19 @@ function replaceMissing(str) {
 }
 //example call:
 //replaceMissing("abce");
+
+
+//Check if a value is classified as a boolean primitive. Return true or false.
+function booWho(bool) {
+  // In JavaScript there are 5 primitive types: undefined, null, boolean, string and number. 
+  // Everything else is an object.
+
+  //if the input is true or false it is a boolean
+  //everything else is not a boolean primitive
+  //thus return:
+  var returnVal = (bool === true || bool === false);
+  console.log(returnVal);
+  return returnVal;
+}
+//Example Call:
+//booWho("null");
