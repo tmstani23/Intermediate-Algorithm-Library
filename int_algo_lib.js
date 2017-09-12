@@ -321,6 +321,9 @@ function translatePigLatin(str) {
 //Example call:
 //translatePigLatin("tree");
 
+
+//Match a dna character string to its pairs and encapsulate the pair in an array.
+//Can be done on a sequence of characters
 function dnaPair(str) {
   //Create encapsulating array:
   var finalArr = [];
@@ -350,8 +353,42 @@ function dnaPair(str) {
         break;
     }  
   }
-console.log(finalArr);
-return finalArr;
+  console.log(finalArr);
+  return finalArr;
 }
 //example call:
-dnaPair("ATCGA");
+//dnaPair("ATCGA");
+
+//Output the missing letter in the passed letter range and return it.
+function replaceMissing(str) {
+  var finalStr;
+  //loop through each character
+  //if the char code is not one greater than the previous:
+    //find the charcode that is one greater
+    //return this char code as a letter
+  
+  //console.log(finalStr);
+  for(i=0; i<str.length; i++) {
+    //save current letter index
+    var char = i;
+    //save current letter char code:
+    var charCode = str.charCodeAt(char);
+    //save previous letter char code:
+    var charCodePrev = str.charCodeAt(char - 1);
+    //if the letter is not the first letter:
+    if (char != 0) {
+      //if the current letter's charCode - 1 does not equal the previous letter's charCode:
+      //and the current letter's charCode is not NaN:
+      if(charCode -1 != charCodePrev && charCode != NaN && charCode -1) {
+        //plug the missing letter charCode, (charCode-1), into a js method that converts char code to letters
+        //save correct letter into finalStr:
+        finalStr = String.fromCharCode(charCode - 1);
+        //console.log(finalStr);
+      }
+    }
+  }
+  console.log(finalStr);
+  return finalStr;
+}
+//example call:
+//replaceMissing("abce");
