@@ -408,3 +408,30 @@ function booWho(bool) {
 }
 //Example Call:
 //booWho("null");
+
+
+//This function unites all unique input array elements into a single return array.
+function uniteUnique(arr) {
+  //convert all args to an array of arrays:
+  var args = [...arguments]; 
+  //create a final array consisting of the first input argument
+  finalArr = arguments[0];
+  //flatten args into single array
+  var singleArr = args.reduce(function(a, b){
+    return a.concat(b);
+  }, [])
+  //loop through the single array of arguments:
+  for(i=0; i<singleArr.length; i++) {
+    //if the final array does not contain 
+      //the current element from the single array
+    if (finalArr.indexOf(singleArr[i]) == -1) {
+      //push the single array element into the final array
+      finalArr.push(singleArr[i]);
+    }
+  }
+  
+  console.log(finalArr);
+  return finalArr;
+}
+//Example Call:
+//uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
