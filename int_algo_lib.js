@@ -435,3 +435,25 @@ function uniteUnique(arr) {
 }
 //Example Call:
 //uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+//Convert the characters &, <, >, " (double quote), and ' (apostrophe), 
+//in a string, to their corresponding HTML entities.
+function convertHTML(str) {
+  //create array that holds all the regex patterns used to match:
+  var matchArray = [/&/gi, /</g, />/g, /"/g, /'/g ];
+  //create array holding all the html character entities:
+  var replaceArray = ["&amp;", "&lt;", "&gt;","&quot;","&apos;" ]
+  //create final string variable and set it equal to the input string:
+  var finalStr = str;
+  //loop through the match array:
+  for (i=0; i < matchArray.length; i++) {
+    //search finalStr for match array element and replace with corresponding replace array element
+    //update the finalStr:
+    finalStr = finalStr.replace(matchArray[i], replaceArray[i])
+    
+  }
+  console.log(finalStr);
+  return finalStr;
+}
+//Example Call:
+convertHTML("< Dolce & Gabbana < are \" \'ftw ");
