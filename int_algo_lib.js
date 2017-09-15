@@ -456,4 +456,27 @@ function convertHTML(str) {
   return finalStr;
 }
 //Example Call:
-convertHTML("< Dolce & Gabbana < are \" \'ftw ");
+//convertHTML("< Dolce & Gabbana < are \" \'ftw ");
+
+
+//Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+function spinalCase(str) {
+  //create variable that matches spaces within a string using regExp:
+  var reSpace = /\s/g;
+  //match lowercase letters or uppercase letters:
+  var reCaps = /([a-z])([A-Z])/g;
+  //match underscore characters:
+  var reUnder = /_/g;
+  //replace spaces in the string with dashes:
+  str = str.replace(reSpace, '-');
+  //replace uppercase letters with lowercase and put a dash in between:
+  str = str.replace(reCaps, '$1-$2');
+  //replace underscores with dashes:
+  str = str.replace(reUnder, '-');
+  //transform the string to lowercase:
+  str = str.toLowerCase();
+  console.log(str);
+  return str;
+}
+//Example Call:
+//spinalCase('AllTheSmallThings');
