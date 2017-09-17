@@ -480,3 +480,44 @@ function spinalCase(str) {
 }
 //Example Call:
 //spinalCase('AllTheSmallThings');
+
+
+//Return the sum of all odd Fibonacci numbers that are less than or equal to the input number.
+function sumFibs(num) {
+  var numArr = []
+  //loop from 0 to number
+  for(i=0; i<num; i++) {
+    //calculate current fib number:
+      //sum the number two previous with the previous number:
+    var currentNum = numArr[i-2] + numArr[i-1];
+    //seed the first two values in the array as 1's
+    if(i<2){
+      numArr.push(1);
+    }
+    //as long as the current number is less than the input number:
+    else if (currentNum <= num) {
+      //push the current number into the array  
+      numArr.push(currentNum); 
+    }
+  } 
+  //Remove even numbers from the numArr array:  
+  //loop for each item in the numArr array:
+  numArr.forEach(function(item, index){
+    //if the item divides evenly by two with no remainder
+      //it is even
+    if (item % 2 == 0) {
+      //splice out 1 number at this index:
+      numArr.splice(index, 1);
+    }
+  });
+  //calculate the answer:
+  //reduce the numArr array to the sum of each value in the array:
+  var answer = numArr.reduce(function (sum, value) {
+    return sum + value;
+  })
+  console.log(numArr);
+  console.log(answer);
+  return answer;
+}
+//Example Call:
+//sumFibs(75025);
