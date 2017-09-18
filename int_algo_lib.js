@@ -502,7 +502,7 @@ function sumFibs(num) {
   } 
   //Remove even numbers from the numArr array:  
   //loop for each item in the numArr array:
-  numArr.forEach(function(item, index){
+  numArr.forEach((item, index) => {
     //if the item divides evenly by two with no remainder
       //it is even
     if (item % 2 == 0) {
@@ -512,12 +512,60 @@ function sumFibs(num) {
   });
   //calculate the answer:
   //reduce the numArr array to the sum of each value in the array:
-  var answer = numArr.reduce(function (sum, value) {
-    return sum + value;
-  })
+  var answer = numArr.reduce((sum, value) => {return sum + value;})
   console.log(numArr);
   console.log(answer);
   return answer;
 }
 //Example Call:
 //sumFibs(75025);
+
+
+//A function that sums all primes up to and including an input number.
+function sumPrimes(num) {
+  //create array
+  let numArr = [];
+  
+  for(i=2; i<=num; i++) {
+    numArr.push(i);
+  }
+  
+  let finalArr = numArr.filter((n) => {
+    let square = Math.sqrt(n);
+    for(let m = 2; m <= numArr.length; m++) {
+      console.log(n + "nvalue")
+      
+      let answer = n/m;
+      if(m <= square) {
+        //console.log(answer)
+       //if answer is an integer not a decimal
+        if(answer % 1 == 0) {
+          console.log(answer);
+          console.log(square)
+          console.log(m)
+          console.log(n + "is not prime");
+          break;
+        }
+        else if (answer % 1 != 0) {
+          console.log(answer % 1);
+          console.log(square)
+          console.log(m);
+          console.log(n + "is prime");
+          console.log(answer)
+          return n;
+        }
+      }
+      // else if(n=2) {
+      //   return n;
+      // }
+    }
+  })
+  // .reduce((sum, n) => {
+  //   return sum+n;
+  // });
+  
+  console.log(finalArr);
+  return finalArr;
+}
+
+sumPrimes(10);
