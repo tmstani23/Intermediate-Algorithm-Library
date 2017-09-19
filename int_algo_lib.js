@@ -523,49 +523,36 @@ function sumFibs(num) {
 
 //A function that sums all primes up to and including an input number.
 function sumPrimes(num) {
-  //create array
-  let numArr = [];
+  var res = 0;
   
-  for(i=2; i<=num; i++) {
-    numArr.push(i);
-  }
-  
-  let finalArr = numArr.filter((n) => {
-    let square = Math.sqrt(n);
-    for(let m = 2; m <= numArr.length; m++) {
-      console.log(n + "nvalue")
-      
-      let answer = n/m;
-      if(m <= square) {
-        //console.log(answer)
-       //if answer is an integer not a decimal
-        if(answer % 1 == 0) {
-          console.log(answer);
-          console.log(square)
-          console.log(m)
-          console.log(n + "is not prime");
-          break;
-        }
-        else if (answer % 1 != 0) {
-          console.log(answer % 1);
-          console.log(square)
-          console.log(m);
-          console.log(n + "is prime");
-          console.log(answer)
-          return n;
+    // Function to get the primes up to max in an array
+    function getPrimes(max) {
+      var sieve = [];
+      var i;
+      var j;
+      var primes = [];
+      for (i = 2; i <= max; ++i) {
+        //if the value at this index is false:
+        if (!sieve[i]) {
+          // i has not been marked -- it is prime
+          primes.push(i);
+          //loop using conditions for finding prime numbers
+          for (j = i << 1; j <= max; j += i) {
+            //if it's prime mark true
+            sieve[j] = true;
+          }
         }
       }
-      // else if(n=2) {
-      //   return n;
-      // }
-    }
-  })
-  // .reduce((sum, n) => {
-  //   return sum+n;
-  // });
   
-  console.log(finalArr);
-  return finalArr;
+      return primes;
+    }
+    // Add the primes
+    var primes = getPrimes(num);
+    for (var p = 0; p < primes.length; p++) {
+      res += primes[p];
+    }
+    console.log(primes);
+    return res;
 }
-
-sumPrimes(10);
+//example call:
+//sumPrimes(20);
