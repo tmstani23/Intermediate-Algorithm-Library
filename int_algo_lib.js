@@ -556,3 +556,58 @@ function sumPrimes(num) {
 }
 //example call:
 //sumPrimes(20);
+
+
+//Find the smallest common multiple of the provided parameters 
+//that can be evenly divided by both, 
+//as well as by all sequential numbers in the range between these parameters.
+function leastCommonMult(arr) {
+  //Assign arguments to separate variables;
+  let argOne = arr[0];
+  let argTwo = arr[1];
+  //Set the smallest argument to argOne:
+  if(argOne > argTwo) {
+    argOne = arr[1];
+    argTwo = arr[0]
+  }
+  //Assign other required variables
+  let argRange = [];
+  let answer = false;
+  let result;
+  let divided = 0;
+  let maybeAnswer = argTwo;
+  //Create a range of numbers between the two arguments
+  for(i=argOne+1; i<argTwo; i++){
+    //Save each # into argRange array:
+    argRange.push(i);
+  }
+  //Loop until answer is false:
+  while(answer == false) {
+    //If maybeAnswer divides evenly(no remainder) with argOne:
+    if((maybeAnswer / argOne) % 1 === 0){
+      //For each value in the argRange array:
+      argRange.forEach((val) =>{
+        //If maybeAnswer and the value divide evenly:
+        if((maybeAnswer / val) % 1 == 0){
+        //Add one to the divided counter:
+        divided = divided + 1; 
+        }
+      })
+      //If divided = the number of vals in the argRange array:
+      if(divided == argRange.length) {
+        //save result as maybe answer
+        result = maybeAnswer;
+        //close while loop
+        answer = true;
+      }
+      //reset counter:
+      divided = 0;
+    }
+    //Maybe answer counts up by multiples of argTwo
+    maybeAnswer = maybeAnswer + argTwo;
+  }
+  console.log(result);
+  return result;
+}
+//Example Call:
+//leastCommonMult([13,1]);
