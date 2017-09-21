@@ -611,3 +611,17 @@ function leastCommonMult(arr) {
 }
 //Example Call:
 //leastCommonMult([13,1]);
+
+//A function that looks through an array (first argument) and 
+//returns the first element in the array that passes a truth test (second argument).
+function findElement(arr, func) {
+  //search each element in the arr
+  //execute the func argument(a function)
+  //if the function returns true: return the found element
+  //else if none are found it returns undefined
+  console.log(arr.find(func));
+  return arr.find(func);
+  
+}
+//Example Call
+//findElement([1, 3, 5, 8, 9, 10], function(num){ return num % 2 === 0; });
