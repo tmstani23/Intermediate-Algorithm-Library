@@ -621,7 +621,40 @@ function findElement(arr, func) {
   //else if none are found it returns undefined
   console.log(arr.find(func));
   return arr.find(func);
-  
 }
 //Example Call
 //findElement([1, 3, 5, 8, 9, 10], function(num){ return num % 2 === 0; });
+
+
+// Drop the elements of an array (first argument), 
+// starting from the front, until the predicate (second argument) returns true.
+function dropElements(arr, func) {
+  answerArr = [];
+ //Loop through the input array:
+ for (i=0; i<arr.length; i++) {
+    //if the current element in the array runs true
+    //when passed through the 2nd argument input function
+    if((func(arr[i]))===true) {
+      //slice the from the current element to the end of the array
+      //and save segment in new answerArr array:
+      answerArr = arr.slice(i);
+      //end the loop;
+      break;
+    }
+  }
+  console.log(arr);
+  console.log(answerArr);
+  return answerArr;
+}
+  //A recursive solution:
+  // function dropElements(arr, func) {
+  //   if (arr.length === 0 || func(arr[0])) {
+  //     return arr;
+  //   } else {
+  //     arr.shift();
+  //     return dropElements(arr, func);
+  //   }
+  // }
+
+//Example Call:
+//dropElements([1, 2, 3, 4], function(n) {return n >= 3;});
