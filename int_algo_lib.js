@@ -658,3 +658,24 @@ function dropElements(arr, func) {
 
 //Example Call:
 //dropElements([1, 2, 3, 4], function(n) {return n >= 3;});
+
+
+//This function flattens nested arrays into one.
+function steamrollArray(arr) {
+  finalArr = [];
+  tempArr = [];
+  // for(i=0; i<arr.length; i++) {
+  //   if (Array.isArray(arr)) {
+  //     if(arr[i]!=arr[0] )
+  //     console.log(arr[i] + "true");
+  //     tempArr = arr.splice(arr[i]);
+      
+  //   }
+  // }
+  finalArr = [].concat.apply([], arr);
+  console.log(tempArr);
+  console.log(finalArr);
+  return finalArr;
+}
+
+steamrollArray([1, [2, 3, 4]]);
