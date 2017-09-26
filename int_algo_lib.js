@@ -688,3 +688,31 @@ function mergeNested(arr) {
 }
 //Example Call: 
 //mergeNested([1, [2, 3, [8, 9],{}, 4,]]);
+
+
+//This function translates a binary string to English
+function binaryAgent(str) {
+  let finalArr = [];
+  //split the string into an array of elements:
+  let tempArr = str.split(' ');
+  //map translated elements to finalArr array:
+  finalArr = tempArr.map((element) => {
+    //parse the element to its integer value
+    //2 specifies the base of the element
+    //base 2 is binary:
+    let parsed = parseInt(element, 2);
+    //get the translated character code:
+    let converted = String.fromCharCode(parsed);
+    //send the converted character into the array:
+    return converted;
+  });
+  //join the array into a string:
+  str = finalArr.join("")
+  console.log(str);
+  return str;
+}
+//Example Call:
+// binaryAgent(`01000001 01110010 01100101 01101110 00100111 
+// 01110100 00100000 01100010 01101111 01101110 
+// 01100110 01101001 01110010 01100101 01110011 00100000 01100110 
+// 01110101 01101110 00100001 00111111`);
