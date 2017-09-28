@@ -716,3 +716,22 @@ function binaryAgent(str) {
 // 01110100 00100000 01100010 01101111 01101110 
 // 01100110 01101001 01110010 01100101 01110011 00100000 01100110 
 // 01110101 01101110 00100001 00111111`);
+
+//This function checks if the predicate (second argument) 
+//is truthy on all elements of a collection (first argument).
+function truthCheck(collection, pre) {
+  //Loop through the collection of objects:
+  for(i=0; i < collection.length; i++) {
+    //if the collection value is falsey:
+    if(!collection[i][pre]) {
+      console.log(collection[i][pre] + "false");
+      return false;
+    }
+  }
+  //if none of the collection values return false
+  //then return true:
+  return true;
+}
+//Example Call:
+//truthCheck([{"name": "Pete", "onBoat": true}, {"name": "Repeat", "onBoat": true}, 
+  //{"name": "FastFoward", "onBoat": null}], "onBoat"); 
