@@ -735,3 +735,39 @@ function truthCheck(collection, pre) {
 //Example Call:
 //truthCheck([{"name": "Pete", "onBoat": true}, {"name": "Repeat", "onBoat": true}, 
   //{"name": "FastFoward", "onBoat": null}], "onBoat"); 
+
+// Create a function that sums two arguments together. 
+// If only one argument is provided, 
+// then return a function that expects one argument and returns the sum.
+function addTogether() {
+  //If there is only one argument and it is a number:
+  if(arguments.length === 1 && typeof arguments[0] === "number") {
+    //save the argument as a variable x:
+    let x = arguments[0]
+    //return a function with one arg, y:
+    return function(y){
+      //if y is not a number:
+      if(typeof y != "number") {
+        return undefined;
+      }
+      //else return the sum of the original input argument and the new function y argument:
+      else {
+        console.log(x+y)
+        return x + y;
+      }
+    }
+  };
+  //if there are two arguments and the first or second argument is not a number:
+  if (arguments.length === 2 && typeof arguments[0] != "number" || typeof arguments[1] != "number" ) {
+    console.log("args not number")
+    return undefined;
+  }
+  //return the sum of both arguments  
+  let answer = arguments[0] + arguments[1];
+  console.log(answer);
+  return answer;
+}
+//Example Call:
+//addTogether(3)(3);
+
+  
