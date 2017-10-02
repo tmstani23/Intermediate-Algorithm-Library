@@ -9,33 +9,21 @@ function sumRange(arr) {
         //push each number into a new array to get a range of numbers
         arr2.push(i);
     }
-    
-    /* reduce executes the callback function once for each element present in the array, 
-      excluding holes in the array, receiving four arguments:
-          accumulator
-          currentValue
-          currentIndex
-          array 
-      */
-    var total = arr2.reduce(function(sum, value) {
-        return sum + value;
-  }, 0);
-    //here the accumulator is sum, currentValue is same as index value
-      //and return value is sum + currentValue
-    //the second parameter 0 is the initial starting value
-    //console.log(total);
+    //add the current element in the array
+    //to an accumulating sum of previous values.
+    var total = arr2.reduce((sum, value) =>{return sum + value;}, 0);
+    console.log(total);
     return total;
   }
-  //sumRange([1, 4]);
+  //Example Call:
+  //Should output 6
+  //sumRange([1, 3]);
 
-
-  
 
 //Compare two arrays and return a new array 
-    //with any items only found in one of the two given arrays, 
-    //but not both. 
+//with any items only found in one of the two given arrays, 
+//but not both. 
 function uniqueArray(arr1, arr2) {
-  
   var newArr = [];
   var arrLength;
   //set the arrLength variable to the largest of the two input arrays
@@ -62,10 +50,12 @@ function uniqueArray(arr1, arr2) {
       newArr.push(arr2[i]);
     }
   }
-  //console.log(newArr);
+  console.log(newArr);
   return newArr;
 }
-//uniqueArray([1, "calf", 3, "piglet"], [7, "filly"]);
+//Example Call:
+//Should output: ["piglet", 4]
+//uniqueArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]);
 
 //Convert a number to roman numeral:
 function convertToRoman(num) {
@@ -165,7 +155,7 @@ function convertToRoman(num) {
   }
   
   result = resultSymb.join("");
-  //console.log(result);
+  console.log(result);
   return result;
   
 }
@@ -268,8 +258,6 @@ function myReplace(str, before, after) {
 //Example call:
 //myReplace("He is Sleeping on the couch", "Sleeping", "sitting");
 
-
-//Translate the provided string to pig latin.
 function translatePigLatin(str) {
   //set flag variables for whether a character is a vowel:
   var isVowel = false;
@@ -395,7 +383,7 @@ function replaceMissing(str) {
 
 
 //Check if a value is classified as a boolean primitive. Return true or false.
-function booWho(bool) {
+function checkBoo(bool) {
   // In JavaScript there are 5 primitive types: undefined, null, boolean, string and number. 
   // Everything else is an object.
 
@@ -407,7 +395,7 @@ function booWho(bool) {
   return returnVal;
 }
 //Example Call:
-//booWho("null");
+//checkBoo("null");
 
 
 //This function unites all unique input array elements into a single return array.
@@ -551,7 +539,7 @@ function sumPrimes(num) {
     for (var p = 0; p < primes.length; p++) {
       res += primes[p];
     }
-    console.log(primes);
+    console.log(res);
     return res;
 }
 //example call:
@@ -635,7 +623,7 @@ function dropElements(arr, func) {
     //if the current element in the array runs true
     //when passed through the 2nd argument input function
     if((func(arr[i]))===true) {
-      //slice the from the current element to the end of the array
+      //slice from the current element to the end of the array
       //and save segment in new answerArr array:
       answerArr = arr.slice(i);
       //end the loop;
@@ -662,30 +650,24 @@ function dropElements(arr, func) {
 
 //This function merges nested arrays into one.
 function mergeNested(arr) {
-  let finalArr = [];
-  //reduce the input array it will merge a current element with a previous
-  finalArr = arr.reduce((prev, curr) =>{
-    console.log(prev);
-    //if the previous element is an array:
-    if(Array.isArray(prev)){
-      //return the previous element merged with the current element: 
-      return prev.concat(curr);
+  var flattenedArray = [];
+  // Create function that adds an element if it is not an array.
+  // If it is an array, then loop through it and use recursion on that array.
+  var flatten = function(arg) {
+    if (!Array.isArray(arg)) {
+      flattenedArray.push(arg);
+    } else {
+      for (var element in arg) {
+        flatten(arg[element]);
+      }
     }
-  }, []);
-  //Check each element in the finalArr array:  
-  finalArr.forEach((element) =>{
-  //if the element is not the first element:
-    if (element != finalArr[0]) {
-      //if the element is an array:
-      if (Array.isArray(element)) {
-        //run the function over again (recursively):
-       mergeNested(finalArr);
-    }
-  }
- })
- console.log(finalArr); 
- return finalArr;
+  };
+  // Call the function for each element in the array
+  arr.forEach(flatten);
+  console.log(flattenedArray);
+  return flattenedArray;
 }
+
 //Example Call: 
 //mergeNested([1, [2, 3, [8, 9],{}, 4,]]);
 
@@ -724,17 +706,18 @@ function truthCheck(collection, pre) {
   for(i=0; i < collection.length; i++) {
     //if the collection value is falsey:
     if(!collection[i][pre]) {
-      console.log(collection[i][pre] + "false");
+      console.log("false");
       return false;
     }
   }
   //if none of the collection values return false
   //then return true:
+  console.log("true");
   return true;
 }
 //Example Call:
-//truthCheck([{"name": "Pete", "onBoat": true}, {"name": "Repeat", "onBoat": true}, 
-  //{"name": "FastFoward", "onBoat": null}], "onBoat"); 
+// truthCheck([{"name": "Pete", "onBoat": true}, {"name": "Repeat", "onBoat": true}, 
+//   {"name": "FastFoward", "onBoat": null}], "onBoat"); 
 
 // Create a function that sums two arguments together. 
 // If only one argument is provided, 
