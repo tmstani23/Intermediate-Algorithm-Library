@@ -194,9 +194,9 @@ Convert the characters &, <, >, " (double quote), and ' (apostrophe),
 in a string, to their corresponding HTML entities.
 
 Example Call:
-convertHTML("< Dolce & Gabbana < are \" \'ftw ");
+convertHTML(" < Dolce & Gabbana < are " 'ftw ");
 
-Output: &lt; Dolce &amp; Gabbana &lt; are &quot; &apos;ftw 
+Output: \&lt; Dolce \&amp; Gabbana \&lt; are \&quot; \&apos; ftw 
 
 
 **function spinalCase(str):**
