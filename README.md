@@ -7,7 +7,7 @@
 
 List of Algorithms:
 
-function sumRange(arr):
+function sumRange(arr): /n
 This function sums all numbers in a range and returns the total:
 Example Call:
 sumRange([1, 3]);
