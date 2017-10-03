@@ -4,7 +4,7 @@
 
 # List of Algorithms:
 
-## Number Functions
+## Number Functions:
 
 
 **function sumRange(arr):** This function sums all numbers in a range and returns the total.
